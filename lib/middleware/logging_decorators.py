@@ -3,8 +3,7 @@ import time
 
 def logging_view_filter(request, view_func, view_args, view_kwargs):
     """
-    Decorates a view to log out timing for the view and keep track of
-    How many views have been called an how long they have taken
+    Decorates a view to log out start and end time, duration, and view count
     """  
     start_time = time.time()
     response = view_func(request, *view_args, **view_kwargs)
@@ -19,8 +18,7 @@ def logging_view_filter(request, view_func, view_args, view_kwargs):
 
 def model_decorator(func=None):
     """
-    Decorates a model function to give us logging information about it
-    You can decorate as many functions as you want
+    Decorates a model function to return standard logging information
     """
     def decorated(*args, **kwargs):
         start_time = time.time()
